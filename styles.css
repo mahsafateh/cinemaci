@@ -13,6 +13,8 @@
         var(--ticket-red),
         var(--ticket-frame)
     );
+    --card-imdb: #f5c518;
+    --imdb-ink: #011326;
 }
 
 @font-face {
@@ -37,12 +39,17 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+/* ----------------------Header Styles---------------------- */
 .container {
     width: 100vw;
     min-height: 100vh;
 }
 
 .nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -167,15 +174,36 @@ body:has(.menu-toggle:checked) {
     overflow: hidden;
 }
 
+/* ----------------------Cards Styles---------------------- */
 .cards {
     display: flex;
     justify-content: center;
-    align-items: center;
-    padding: 10px 20px;
+    align-items: flex-start;
+    padding: 40px 20px 10px;
     width: 100vw;
     height: 100vh;
 }
 
+.cards .imdb {
+    --imdb-fill: 0.1em;
+    letter-spacing: 0.08em;
+    background-color: var(--imdb-ink);
+    color: var(--card-imdb);
+    
+    font-weight: 900;
+    background-clip: text;
+    text-shadow: -1px -1px 6px var(--imdb-ink); 
+    
+}
+
+.cards .imdb:hover {
+    font-size: 50px;
+}
+
+
+
+
+/* ----------------------Footer Styles---------------------- */
 .ticket {
     --notch: 8px;
     position: relative;
