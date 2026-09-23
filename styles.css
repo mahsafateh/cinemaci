@@ -62,6 +62,15 @@ body {
     height: auto;
 }
 
+.logo-bar {
+    transition: opacity 0.35s ease, visibility 0.35s;
+}
+
+.nav:has(.menu-toggle:checked) .logo-bar {
+    opacity: 0;
+    visibility: hidden;
+}
+
 .menu-toggle {
     position: absolute;
     opacity: 0;
@@ -69,13 +78,93 @@ body {
 }
 
 .menu-button {
+    position: relative;
+    z-index: 30;
     display: inline-flex;
     align-items: center;
     cursor: pointer;
 }
 
+.menu-toggle:focus-visible + .menu-button {
+    outline: 2px solid var(--ticket-red);
+    outline-offset: 4px;
+}
+
+.nav-menu {
+    position: fixed;
+    top: 0;
+    right: calc(-50vw - 40px);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 50vw;
+    height: 100vh;
+    padding: 24px;
+    overflow-y: auto;
+    background-color: var(--ticket-paper);
+    box-shadow: -8px 0 24px rgb(0 0 0 / 0.25);
+    visibility: hidden;
+    transition: right 0.35s ease, visibility 0.35s;
+}
+
 .nav-links {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    list-style: none;
+}
+
+.nav-links li a {
+    display: block;
+    padding: 10px 0;
+    color: var(--ticket-red);
+    font-size: clamp(18px, 5vw, 30px);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+    color: #0A2947;
+}
+
+.nav-links li a:active {
+    color: #333;
+}
+
+.nav-links li a:focus {
+    outline: none;
+}
+
+.nav-links li a:focus-visible {
+    outline: 2px solid #333;
+}
+
+.menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    background-color: rgb(0 0 0 / 0.35);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.menu-toggle:checked ~ .nav-menu {
+    right: 0;
+    visibility: visible;
+}
+
+.menu-toggle:checked ~ .menu-backdrop {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+body:has(.menu-toggle:checked) {
+    overflow: hidden;
 }
 
 .cards {
@@ -89,47 +178,45 @@ body {
 
 
 @media (min-width: 768px) {
-    .menu-button {
+    .menu-button,
+    .logo-bar {
         display: none;
     }
 
-    .nav-links {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 20px;
-        list-style: none;
-      
+    .menu-backdrop {
+        display: none;
     }
 
-    .nav-links li {
-        margin: 0;
+    body:has(.menu-toggle:checked) {
+        overflow: visible;
+    }
+
+    .nav-menu {
+        position: static;
+        flex: 1;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        width: auto;
+        height: auto;
+        padding: 0;
+        overflow: visible;
+        background-color: transparent;
+        box-shadow: none;
+        visibility: visible;
+        transition: none;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        align-items: center;
+        gap: clamp(4px, 1.2vw, 20px);
     }
 
     .nav-links li a {
-        text-decoration: none;
-        color: var(--ticket-red);
-        font-size: 30px;
+        padding: 10px clamp(6px, 1vw, 20px);
+        font-size: clamp(18px, 2.2vw, 30px);
         font-weight: 600;
-        padding: 10px 20px;
-        display: block;
-        transition: background-color 0.3s ease;
     }
-
-    .nav-links li a:hover {
-        color: #0A2947;
-    }
-
-    .nav-links li a:active {
-        color: #333;
-    }
-    
-    .nav-links li a:focus {
-        outline: none;
-    }
-
-    .nav-links li a:focus-visible {
-        outline: 2px solid #333;
-    }
-
 }

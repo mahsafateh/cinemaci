@@ -11,19 +11,26 @@
     <div class="container">
         <!-- Hamburger menu when screen is smaller with media query and display none when screen is larger -->
         <nav class="nav" aria-label="Main navigation">
-            <a href="/" class="logo"><img class="logo-img" src="assets/cinemaci.svg" alt="Logo" width="150" height="150"/></a>
+            <a href="/" class="logo logo-bar"><img class="logo-img" src="assets/cinemaci.svg" alt="Logo" width="150" height="150"/></a>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle"/>
             <label for="menu-toggle" class="menu-button">
                 <img class="menu-burger" src="assets/favicon.svg" alt="Menu" width="28" height="28"/>
             </label>
-          
-            <ul class="nav-links">
-              <li><a href="/">Home</a></li>
-              <li><a href="/movies">Movies</a></li>
-              <li><a href="/series">Series</a></li>
-              <li><a href="/anime">Anime</a></li>
-              <li><a href="/tv-shows">TV-Shows</a></li>
-              <li><a href="/about">About</a></li>
-            </ul>
+
+            <div class="nav-menu">
+                <a href="/" class="logo"><img class="logo-img" src="assets/cinemaci.svg" alt="Logo" width="150" height="150"/></a>
+
+                <ul class="nav-links">
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/movies">Movies</a></li>
+                  <li><a href="/series">Series</a></li>
+                  <li><a href="/anime">Anime</a></li>
+                  <li><a href="/tv-shows">TV-Shows</a></li>
+                  <li><a href="/about">About</a></li>
+                </ul>
+            </div>
+
+            <label for="menu-toggle" class="menu-backdrop" aria-hidden="true"></label>
           </nav>
 
 
