@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"/>
     <link rel="stylesheet" href="styles.css"/>
     <link rel="icon" type="image/svg+xml" href="./assets/cinemaci.svg">
     <title>Cinemaci</title>
@@ -35,9 +38,151 @@
 
 
         <!-- Cards with movie details -->
-        <div class="cards">
-            <h2 class="cards-title">Top 10 on <span class="imdb">IMDB</span> this week</h2>
-        </div>
+        <section class="cards" aria-labelledby="cards-title">
+            <h2 class="cards-title" id="cards-title">Top 10 on <span class="imdb">IMDB</span> this week</h2>
+
+            <div class="top-ten">
+                <div class="top-featured">
+                    <article class="movie-card movie-card--featured movie-card--top">
+                        <div class="movie-poster">
+                            <img src="assets/Resident%20Evil%20(2026).jpg" alt="Resident Evil poster" width="180" height="270"/>
+                            <button type="button" class="watchlist-add" aria-label="Add Resident Evil to watchlist">+</button>
+                        </div>
+                        <div class="movie-info">
+                            <span class="rank-badge">#1</span>
+                            <h3 class="movie-title">Resident Evil</h3>
+                            <ul class="movie-meta">
+                                <li>2026</li>
+                                <li>1h 34m</li>
+                                <li>R</li>
+                            </ul>
+                            <p class="movie-rating">
+                                <span class="rating-star" aria-hidden="true">★</span>
+                                <span>7.7 <span class="rating-votes">(46K)</span></span>
+                                <button type="button" class="text-button">☆ Rate</button>
+                            </p>
+                            <button type="button" class="text-button watched-button">
+                                <svg class="eye-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5C6.5 5 2.7 9.2 1.5 12c1.2 2.8 5 7 10.5 7s9.3-4.2 10.5-7C21.3 9.2 17.5 5 12 5Zm0 11.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Zm0-7a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z"/></svg>
+                                Mark as watched
+                            </button>
+                            <p class="movie-plot">A hapless courier is tasked with delivering a package to a remote hospital. He soon finds himself caught in the middle of an outbreak and must fight through hordes of mutated creatures to survive.</p>
+                        </div>
+                    </article>
+
+                    <article class="movie-card movie-card--featured">
+                        <div class="movie-poster">
+                            <img src="assets/Monster%20(2022).jpg" alt="Monster poster" width="180" height="270"/>
+                            <button type="button" class="watchlist-add" aria-label="Add Monster to watchlist">+</button>
+                        </div>
+                        <div class="movie-info">
+                            <span class="rank-badge">#2</span>
+                            <h3 class="movie-title">Monster</h3>
+                            <ul class="movie-meta">
+                                <li>TV Series</li>
+                                <li>2022–</li>
+                                <li>35 eps</li>
+                                <li>TV-MA</li>
+                            </ul>
+                            <p class="movie-rating">
+                                <span class="rating-star" aria-hidden="true">★</span>
+                                <span>7.7 <span class="rating-votes">(229K)</span></span>
+                                <button type="button" class="text-button">☆ Rate</button>
+                            </p>
+                            <button type="button" class="text-button watched-button">
+                                <svg class="eye-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5C6.5 5 2.7 9.2 1.5 12c1.2 2.8 5 7 10.5 7s9.3-4.2 10.5-7C21.3 9.2 17.5 5 12 5Zm0 11.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Zm0-7a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z"/></svg>
+                                Mark as watched
+                            </button>
+                            <p class="movie-plot">This true-crime anthology series delivers a multi-layered psychological study of individuals whose extreme actions shocked society.</p>
+                        </div>
+                    </article>
+
+                    <article class="movie-card movie-card--featured">
+                        <div class="movie-poster">
+                            <img src="assets/Neagley%20(2026).jpg" alt="Neagley poster" width="180" height="270"/>
+                            <button type="button" class="watchlist-add" aria-label="Add Neagley to watchlist">+</button>
+                        </div>
+                        <div class="movie-info">
+                            <span class="rank-badge">#3</span>
+                            <h3 class="movie-title">Neagley</h3>
+                            <ul class="movie-meta">
+                                <li>TV Series</li>
+                                <li>2026–</li>
+                                <li>8 eps</li>
+                                <li>TV-MA</li>
+                            </ul>
+                            <p class="movie-rating">
+                                <span class="rating-star" aria-hidden="true">★</span>
+                                <span>7.8 <span class="rating-votes">(9.7K)</span></span>
+                                <button type="button" class="text-button">☆ Rate</button>
+                            </p>
+                            <button type="button" class="text-button watched-button">
+                                <svg class="eye-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5C6.5 5 2.7 9.2 1.5 12c1.2 2.8 5 7 10.5 7s9.3-4.2 10.5-7C21.3 9.2 17.5 5 12 5Zm0 11.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9Zm0-7a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z"/></svg>
+                                Mark as watched
+                            </button>
+                            <p class="movie-plot">Neagley, drawing from her experience with Jack Reacher and the 110 Special Investigators, embarks on a perilous mission to expose a sinister threat, risking her life to unravel the mystery.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="top-rest">
+                    <article class="movie-card movie-card--compact">
+                        <div class="movie-poster">
+                            <img src="assets/The%20Gentlemen%20(2024).jpg" alt="The Gentlemen poster" width="180" height="270" loading="lazy"/>
+                            <span class="rank-badge">#4</span>
+                        </div>
+                        <h3 class="movie-title">The Gentlemen</h3>
+                    </article>
+
+                    <article class="movie-card movie-card--compact">
+                        <div class="movie-poster">
+                            <img src="assets/Lanterns%20(2026).jpg" alt="Lanterns poster" width="180" height="270" loading="lazy"/>
+                            <span class="rank-badge">#5</span>
+                        </div>
+                        <h3 class="movie-title">Lanterns</h3>
+                    </article>
+
+                    <article class="movie-card movie-card--compact">
+                        <div class="movie-poster">
+                            <img src="assets/Reacher%20(2022).jpg" alt="Reacher poster" width="180" height="270" loading="lazy"/>
+                            <span class="rank-badge">#6</span>
+                        </div>
+                        <h3 class="movie-title">Reacher</h3>
+                    </article>
+
+                    <article class="movie-card movie-card--compact">
+                        <div class="movie-poster">
+                            <img src="assets/MobLand%20(2025).jpg" alt="MobLand poster" width="180" height="270" loading="lazy"/>
+                            <span class="rank-badge">#7</span>
+                        </div>
+                        <h3 class="movie-title">MobLand</h3>
+                    </article>
+
+                    <article class="movie-card movie-card--compact">
+                        <div class="movie-poster">
+                            <img src="assets/Widow's%20Bay%20(2026).jpg" alt="Widow's Bay poster" width="180" height="270" loading="lazy"/>
+                            <span class="rank-badge">#8</span>
+                        </div>
+                        <h3 class="movie-title">Widow's Bay</h3>
+                    </article>
+
+                    <article class="movie-card movie-card--compact">
+                        <div class="movie-poster">
+                            <img src="assets/Slow%20Horses%20(2022).jpg" alt="Slow Horses poster" width="180" height="270" loading="lazy"/>
+                            <span class="rank-badge">#9</span>
+                        </div>
+                        <h3 class="movie-title">Slow Horses</h3>
+                    </article>
+
+                    <article class="movie-card movie-card--compact">
+                        <div class="movie-poster">
+                            <img src="assets/The%20End%20of%20Oak%20Street%20(2026).jpg" alt="The End of Oak Street poster" width="180" height="270" loading="lazy"/>
+                            <span class="rank-badge">#10</span>
+                        </div>
+                        <h3 class="movie-title">The End of Oak Street</h3>
+                    </article>
+                </div>
+            </div>
+        </section>
 
 
 

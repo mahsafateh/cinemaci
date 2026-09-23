@@ -15,6 +15,12 @@
     );
     --card-imdb: #f5c518;
     --imdb-ink: #011326;
+    --card-bg: #1f1f1f;
+    --card-panel: #121212;
+    --card-text: #ffffff;
+    --card-muted: #b3b3b3;
+    --card-blue: #5799ef;
+    --card-badge: #0e63be;
 }
 
 @font-face {
@@ -177,11 +183,11 @@ body:has(.menu-toggle:checked) {
 /* ----------------------Cards Styles---------------------- */
 .cards {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 40px 20px 10px;
-    width: 100vw;
-    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
+    min-height: calc(100vh - 13vh);
 }
 
 .cards .imdb {
@@ -198,6 +204,225 @@ body:has(.menu-toggle:checked) {
 
 .cards .imdb:hover {
     font-size: 50px;
+}
+
+.top-ten {
+    flex: 1;
+    display: grid;
+    align-content: start;
+    gap: 16px;
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    color: var(--card-text);
+}
+
+.top-ten,
+.top-ten * {
+    font-family: "Roboto", sans-serif;
+}
+
+.top-featured {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.top-rest {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.movie-card {
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background-color: var(--card-bg);
+}
+
+/* Detail cards: #1 to #3 */
+.movie-card--featured {
+    display: grid;
+    grid-template-columns: min(38%, 180px) 1fr;
+    align-items: start;
+    gap: 12px;
+    padding: 12px;
+}
+
+.movie-card--top {
+    border-color: #2d5aa0;
+    background: linear-gradient(135deg, #1b3a6b 0%, var(--card-bg) 70%);
+}
+
+.movie-poster {
+    position: relative;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    border-radius: 6px;
+    background-color: #2a2a2a;
+}
+
+.movie-poster img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movie-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.movie-title {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.movie-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    list-style: none;
+    color: var(--card-muted);
+    font-size: 14px;
+}
+
+.movie-rating {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.rating-star {
+    color: var(--card-imdb);
+}
+
+.rating-votes {
+    color: var(--card-muted);
+}
+
+.movie-plot {
+    margin-top: 4px;
+    color: #e0e0e0;
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+/* Poster cards: #4 to #10 */
+.movie-card--compact {
+    overflow: hidden;
+}
+
+.movie-card--compact .movie-poster {
+    border-radius: 0;
+}
+
+.movie-card--compact .movie-title {
+    padding: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Small parts */
+.rank-badge {
+    align-self: flex-start;
+    padding: 2px 16px 2px 8px;
+    background-color: var(--card-badge);
+    color: var(--card-text);
+    font-size: 14px;
+    font-weight: 700;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+}
+
+.movie-poster .rank-badge {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.watchlist-add {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 44px;
+    padding-bottom: 8px;
+    border: 0;
+    background-color: rgb(0 0 0 / 0.6);
+    color: var(--card-text);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 80%, 0 100%);
+    transition: background-color 0.2s ease;
+}
+
+.watchlist-add:hover {
+    background-color: rgb(0 0 0 / 0.85);
+}
+
+.text-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--card-blue);
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.text-button:hover {
+    color: #8cbcff;
+}
+
+.watched-button {
+    align-self: flex-start;
+}
+
+.eye-icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.watchlist-add:focus-visible,
+.text-button:focus-visible {
+    outline: 2px solid var(--card-blue);
+    outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+    .top-ten {
+        padding: 20px;
+    }
+
+    .top-rest {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .top-featured {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .movie-card--featured {
+        grid-template-columns: min(48%, 180px) 1fr;
+        gap: 16px;
+    }
+
+    .top-rest {
+        grid-template-columns: repeat(7, 1fr);
+    }
 }
 
 
