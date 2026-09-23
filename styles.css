@@ -176,6 +176,234 @@ body:has(.menu-toggle:checked) {
     height: 100vh;
 }
 
+.ticket {
+    --notch: 8px;
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 99.9vw;
+    margin-inline: auto;
+    padding: 16px 20px;
+    background-color: var(--ticket-frame);
+    -webkit-mask:
+        radial-gradient(circle var(--notch) at 0 50%, #0000 98%, #000) left / 51% calc(var(--notch) * 3.5) repeat-y,
+        radial-gradient(circle var(--notch) at 100% 50%, #0000 98%, #000) right / 51% calc(var(--notch) * 3.5) repeat-y;
+    mask:
+        radial-gradient(circle var(--notch) at 0 50%, #0000 98%, #000) left / 51% calc(var(--notch) * 3.5) repeat-y,
+        radial-gradient(circle var(--notch) at 100% 50%, #0000 98%, #000) right / 51% calc(var(--notch) * 3.5) repeat-y;
+}
+
+.ticket::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--ticket-shine);
+    background-size: 300% 300%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: shine-flow 4s ease-in-out infinite alternate paused;
+}
+
+.ticket:hover::before {
+    opacity: 1;
+    animation-play-state: running;
+}
+
+.ticket-main {
+    position: relative;
+    display: grid;
+    align-content: space-between;
+    gap: 16px;
+    padding: 24px 20px;
+    background-color: var(--ticket-paper);
+}
+
+.ticket-top {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-areas:
+        "title title"
+        "date time";
+    justify-content: start;
+    align-items: center;
+    column-gap: 32px;
+    row-gap: 12px;
+}
+
+.ticket-title {
+    grid-area: title;
+    font-weight: 400;
+    font-size: clamp(2rem, 6vw, 4.25rem);
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--ticket-red);
+    background: var(--ticket-shine);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    transition: color 0.4s ease;
+    animation: shine-flow 4s ease-in-out infinite alternate paused;
+}
+
+.ticket:hover .ticket-title {
+    color: transparent;
+    animation-play-state: running;
+}
+
+.ticket-date,
+.ticket-time {
+    font-weight: 700;
+    font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: var(--ticket-ink);
+}
+
+.ticket-date {
+    grid-area: date;
+}
+
+.ticket-time {
+    grid-area: time;
+}
+
+.ticket-divider {
+    margin-inline: -20px;
+    border: 0;
+    border-top: 1px dotted var(--ticket-red);
+}
+
+.ticket-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px 32px;
+    color: var(--ticket-red);
+    font-size: 1.1rem;
+}
+
+.ticket-seat {
+    display: flex;
+    gap: 60px;
+    text-transform: uppercase;
+}
+
+.ticket-address {
+    font-style: normal;
+    line-height: 1.4;
+}
+
+.stamp {
+    display: none;
+    position: absolute;
+    top: 50%;
+    right: 48px;
+    transform: translateY(-75%) rotate(-20deg);
+    filter: drop-shadow(-6px 6px 0 var(--ticket-stub));
+}
+
+.stamp-card {
+    --stamp-notch: 7px;
+    width: 150px;
+    height: 84px;
+    padding: 7px 14px;
+    background-color: var(--ticket-gold);
+    -webkit-mask:
+        radial-gradient(circle var(--stamp-notch) at 0 50%, #0000 98%, #000) left / 51% 100% no-repeat,
+        radial-gradient(circle var(--stamp-notch) at 100% 50%, #0000 98%, #000) right / 51% 100% no-repeat;
+    mask:
+        radial-gradient(circle var(--stamp-notch) at 0 50%, #0000 98%, #000) left / 51% 100% no-repeat,
+        radial-gradient(circle var(--stamp-notch) at 100% 50%, #0000 98%, #000) right / 51% 100% no-repeat;
+}
+
+.stamp-inner {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+    padding: 4px;
+    border: 1.5px dashed var(--ticket-red);
+}
+
+.stamp-icon {
+    font-size: 15px;
+    font-variation-settings: "FILL" 1;
+    color: var(--ticket-frame);
+}
+
+.stamp-text {
+    display: grid;
+    justify-items: center;
+    color: var(--ticket-red);
+    text-transform: uppercase;
+}
+
+.stamp-title {
+    font-size: 1rem;
+    line-height: 1;
+    text-align: center;
+}
+
+.stamp-admit {
+    margin-top: 4px;
+    padding-top: 2px;
+    border-top: 1px dotted var(--ticket-red);
+    font-size: 0.55rem;
+    font-weight: 500;
+}
+
+.ticket-stub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    background-color: var(--ticket-stub);
+    color: var(--ticket-paper);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.stub-seat {
+    display: flex;
+    gap: 24px;
+    font-size: 1rem;
+}
+
+.barcode {
+    --bars-direction: to right;
+    flex: 1;
+    max-width: 240px;
+    height: 56px;
+    background: repeating-linear-gradient(
+        var(--bars-direction),
+        var(--ticket-paper) 0 3px,
+        transparent 3px 5px,
+        var(--ticket-paper) 5px 6px,
+        transparent 6px 9px,
+        var(--ticket-paper) 9px 13px,
+        transparent 13px 15px,
+        var(--ticket-paper) 15px 16px,
+        transparent 16px 19px,
+        var(--ticket-paper) 19px 21px,
+        transparent 21px 22px,
+        var(--ticket-paper) 22px 23px,
+        transparent 23px 26px
+    );
+}
+
+.stub-admit {
+    font-size: 1.1rem;
+}
+
+@media (min-width: 1024px) {
+    .stamp {
+        display: block;
+    }
+}
 
 @media (min-width: 768px) {
     .menu-button,
@@ -218,5 +446,74 @@ body:has(.menu-toggle:checked) {
         padding: 10px clamp(6px, 1vw, 20px);
         font-size: clamp(18px, 2.2vw, 30px);
         font-weight: 600;
+    }
+
+    .ticket {
+        --notch: 12px;
+        grid-template-columns: 1fr auto;
+        padding: 24px 22px;
+    }
+    
+    .ticket-main {
+        padding: 32px 40px 24px;
+    }
+    
+    .ticket-top {
+        column-gap: clamp(32px, 8vw, 110px);
+    }
+    
+    .ticket-divider {
+        margin-inline: -40px;
+    }
+    
+    .ticket-stub {
+        gap: 20px;
+        padding: 24px 20px;
+    }
+    
+    .stub-seat,
+    .stub-admit {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+    }
+    
+    .stub-seat {
+        align-self: stretch;
+        justify-content: space-between;
+        gap: 40px;
+    }
+    
+    .barcode {
+        --bars-direction: to bottom;
+        flex: none;
+        align-self: stretch;
+        width: 90px;
+        height: auto;
+        min-height: 200px;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .barcode {
+        display: none;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+.ticket::before,
+.ticket-title {
+    animation: none;
+}
+}
+
+@keyframes shine-flow {
+    from {
+        background-position: 0% 50%;
+    }
+
+    to {
+        background-position: 100% 50%;
     }
 }
