@@ -1,6 +1,6 @@
 :root {
     --ticket-frame: #7a2e1e;
-    --ticket-paper: #efe3cc;
+    --ticket-paper: #EBE8DB;
     --ticket-red: #a4272c;
     --ticket-ink: #3a2a1e;
     --ticket-stub: #3b2c22;
@@ -15,7 +15,7 @@
     );
     --card-imdb: #f5c518;
     --imdb-ink: #011326;
-    --card-bg: #1f1f1f;
+    --card-bg: #373636d5;
     --card-panel: #121212;
     --card-text: #ffffff;
     --card-muted: #b3b3b3;
@@ -39,7 +39,8 @@
 }
 
 body {
-    background-image: url(assets/movie-bg.png);
+    /* background-image: url(assets/movie-bg.png); */
+    background-color: #DAD2C7;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -53,9 +54,10 @@ body {
 }
 
 .nav {
-    position: sticky;
-    top: 0;
-    z-index: 40;
+    background-image:url(assets/header-bg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -138,8 +140,19 @@ body {
     transition: color 0.3s ease;
 }
 
+.nav-links li:first-child a{
+    color: #0A2947;
+    font-size: 50px;
+}
+
 .nav-links li a:hover {
     color: #0A2947;
+    font-size: 50px;
+}
+
+.nav-links:has(li:not(:first-child) a:hover) li:first-child a {
+    color: var(--ticket-red);
+    font-size: clamp(18px, 5vw, 30px);
 }
 
 .nav-links li a:active {
@@ -190,6 +203,12 @@ body:has(.menu-toggle:checked) {
     min-height: calc(100vh - 13vh);
 }
 
+.cards-title {
+    color: var(--ticket-red);
+    font-size: 50px;
+    margin-top: 20px;
+}
+
 .cards .imdb {
     --imdb-fill: 0.1em;
     letter-spacing: 0.08em;
@@ -200,10 +219,6 @@ body:has(.menu-toggle:checked) {
     background-clip: text;
     text-shadow: -1px -1px 6px var(--imdb-ink); 
     
-}
-
-.cards .imdb:hover {
-    font-size: 50px;
 }
 
 .top-ten {
@@ -240,7 +255,6 @@ body:has(.menu-toggle:checked) {
     background-color: var(--card-bg);
 }
 
-/* Detail cards: #1 to #3 */
 .movie-card--featured {
     display: grid;
     grid-template-columns: min(38%, 180px) 1fr;
@@ -314,7 +328,6 @@ body:has(.menu-toggle:checked) {
     line-height: 1.45;
 }
 
-/* Poster cards: #4 to #10 */
 .movie-card--compact {
     overflow: hidden;
 }
@@ -429,6 +442,10 @@ body:has(.menu-toggle:checked) {
 
 
 /* ----------------------Footer Styles---------------------- */
+
+.site-footer {
+    margin-top: 20px;
+}
 .ticket {
     --notch: 8px;
     position: relative;
@@ -440,11 +457,11 @@ body:has(.menu-toggle:checked) {
     padding: 16px 20px;
     background-color: var(--ticket-frame);
     -webkit-mask:
-        radial-gradient(circle var(--notch) at 0 50%, #0000 98%, #000) left / 51% calc(var(--notch) * 3.5) repeat-y,
-        radial-gradient(circle var(--notch) at 100% 50%, #0000 98%, #000) right / 51% calc(var(--notch) * 3.5) repeat-y;
+    radial-gradient(circle var(--notch) at 0 50%, #0000 98%, #000) left / 51% calc(var(--notch) * 3.5) repeat-y,
+    radial-gradient(circle var(--notch) at 100% 50%, #0000 98%, #000) right / 51% calc(var(--notch) * 3.5) repeat-y;
     mask:
-        radial-gradient(circle var(--notch) at 0 50%, #0000 98%, #000) left / 51% calc(var(--notch) * 3.5) repeat-y,
-        radial-gradient(circle var(--notch) at 100% 50%, #0000 98%, #000) right / 51% calc(var(--notch) * 3.5) repeat-y;
+    radial-gradient(circle var(--notch) at 0 50%, #0000 98%, #000) left / 51% calc(var(--notch) * 3.5) repeat-y,
+    radial-gradient(circle var(--notch) at 100% 50%, #0000 98%, #000) right / 51% calc(var(--notch) * 3.5) repeat-y;
 }
 
 .ticket::before {
@@ -465,12 +482,16 @@ body:has(.menu-toggle:checked) {
 }
 
 .ticket-main {
+    background-image: url(assets/ticket-bg.png);
+    background-size: cover;
+    
+    background-position: center;
     position: relative;
     display: grid;
     align-content: space-between;
     gap: 16px;
     padding: 24px 20px;
-    background-color: var(--ticket-paper);
+    
 }
 
 .ticket-top {
@@ -693,6 +714,10 @@ body:has(.menu-toggle:checked) {
         flex-direction: row;
         align-items: center;
         gap: clamp(4px, 1.2vw, 20px);
+    }
+
+    .nav-links:has(li:not(:first-child) a:hover) li:first-child a {
+        font-size: clamp(18px, 2.2vw, 30px);
     }
 
     .nav-links li a {
